@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <router-link to="login">登录</router-link>
+        <router-link to="register">注册</router-link>
+        <router-view></router-view>
+    </div>
+</body>
+<script src="lib/vue-2.4.0.js"></script>
+<script src="lib/vue-router-3.0.1.js"></script>
+<script>
+
+    var login={
+        template: "<h2>登录组件</h2>"
+    }
+
+    var register={
+        template: "<h2>注册组件</h2>"
+    }
+
+    var routerObj=new VueRouter({
+        routes:[
+            {path:"/",redirect:"/login"},
+            {path:"/login",component:login},
+            {path:"/register",component:register}
+        ]
+    });
+
+    var vm=new Vue({
+        el:"#app",
+        data:{
+            parentMsg:"这是来自父组件的值"
+        },
+        router:routerObj
+    });
+
+
+</script>
+</html>
